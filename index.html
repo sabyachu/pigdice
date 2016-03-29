@@ -6,29 +6,40 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="jquery-1.12.0.js"></script>
-    <script src="scripts/scripts.js"></script>
+    <script src="js/jquery-1.12.0.js"></script>
+    <script src="js/scripts.js"></script>
   </head>
   <body>
     <div class="container">
-      <p>Welcome to Pig Dice!</p>
-      <p>It is Player <span class="playerturn"></span> turn</p>
 
-      <div class="firstroll">
-        <p>Click the button to roll</p>
-        <button type="submit" name="roll" id="roll1">ROLL</button>
+      <div class="Players">
+        <form class="game" action="index.html" method="post">
+          <div class="row">
+            <div class="playersinfo">
+              <label for="player1" class="twelve.columns">Player 1 Name:</label>
+              <input type="text" name="name" id="player1name" class="twelve columns">
+              <label for="players" class="twelve columns">Player 2 Name:</label>
+              <input type="text" name="name" id="player2name" class="twelve columns">
+
+              <input type="submit" name="name" value="Submit Names" id="submit">
+
+            </div>
+
+            <div class="rollorhold">
+              <p>It is Player <span class="playerturn"></span> turn</p>
+              <p>Would you like to roll or hold</p>
+              <button type="button" name="button" id="hold">Hold</button>
+              <button type="button" name="button" id="roll">Roll</button>
+
+            </div>
+          </div>
+
+        </form>
       </div>
 
-      <div class="nextroll">
-        <p>Would you like to roll or hold</p>
-        <button type="submit" name="roll" id="roll2">ROLL</button>
-        <button type="submit" name="roll" id="hold">HOLD</button>
-      </div>
 
-      <div class="points">
-        <p>Player 1's points: <span class="player1score"></span>
-        <p>Player 2's points: <span class="player2score"></span>
-      </div>
+    </div>
+
 
     </div>
 
