@@ -2,7 +2,7 @@
 
 function Game(player, randomnum, turnscore, totalscore){
 	this.player = 1;
-	this.turnscore = turnscore;
+	this.turnscore = 0;
 	this.totalscore = 0;
 	this.randomnum = randomnum;
 }
@@ -50,21 +50,69 @@ $(document).ready(function(){
 		event.preventDefault();
 		$(".gameboard").show();
 		$(".playgame").hide();
+		$("#hold2").hide();
+		$("#roll2").hide();
 
-		var pigdice = new Game (1, 1, 0, 0);
+		var pigdiceplayer1 = new Game (1, 1, 0, 0);
+		var pigdiceplayer2 = new Game (1, 1, 0, 0);
+
+
 
 
 		$("#hold1").click(function(){
-			pigdice.holdScore();
+			pigdiceplayer1.holdScore();
+			$("#hold1").hide();
+			$("#roll1").hide();
+			$("#hold2").show();
+			$("#roll2").show();
 		});
 
 		$("#roll1").click(function(){
-			pigdice.diceRoll();
-			$(".randomnumber").text(pigdice.randomnum);
+			pigdiceplayer1.diceRoll();
+			$(".randomnumber").text(pigdiceplayer1.randomnum);
 
-			pigdice.scoreKeeper();
-			$(".player1score").text(pigdice.totalscore);
-			$(".turnscore").text(pigdice.turnscore);
+			if (pigdiceplayer1.randomnum === 1) {
+				$("#hold1").hide();
+				$("#roll1").hide();
+				$("#hold2").show();
+				$("#roll2").show();
+			}
+
+
+			pigdiceplayer1.scoreKeeper();
+			$(".player1score").text(pigdiceplayer1.totalscore);
+			$(".turnscore").text(pigdiceplayer1.turnscore);
+
+		});
+
+
+
+
+
+
+
+		$("#hold2").click(function(){
+			pigdiceplayer2.holdScore();
+			$("#hold1").show();
+			$("#roll1").show();
+			$("#hold2").hide();
+			$("#roll2").hide();
+		});
+
+		$("#roll2").click(function(){
+			pigdiceplayer2.diceRoll();
+			$(".randomnumber").text(pigdiceplayer2.randomnum);
+
+			if (pigdiceplayer2.randomnum === 1) {
+				$("#hold1").show();
+				$("#roll1").show();
+				$("#hold2").hide();
+				$("#roll2").hide();
+			}
+
+			pigdiceplayer2.scoreKeeper();
+			$(".player2score").text(pigdiceplayer2.totalscore);
+			$(".turnscore").text(pigdiceplayer2.turnscore);
 
 		});
 
