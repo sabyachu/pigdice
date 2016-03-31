@@ -19,17 +19,29 @@ Game.prototype.switchTurn = function(){
 	}
 };
 
+Game.prototype.switchType = function(){
+	if(this.playtype === 1){
+		this.playtype = 2;
+	} else if (this.playtype === 2){
+		this.playtype = 1;
+	}
+};
+
 Game.prototype.scoreKeeper = function(){
-	debugger;
 	if(this.randomnum === 1){
 		this.turnscore = 0;
 		this.switchTurn();
 	} else {
 		this.turnscore = this.turnscore + this.randomnum;
 		this.totalscore = this.totalscore + this.turnscore;
-		debugger;
 	}
 };
+
+Game.prototype.holdScore = function(){
+	this.totalscore = this.totalscore + this.turnscore;
+	this.switchTurn();
+};
+
 
 
 //User Interface
@@ -43,14 +55,21 @@ $(document).ready(function(){
 
 
 		$("#hold1").click(function(){
-			alert("Hello! Hold1");
+			pigdice.holdScore();
 		});
 
 		$("#roll1").click(function(){
 			pigdice.diceRoll();
+			$(".randomnumber").text(pigdice.randomnum);
+
 			pigdice.scoreKeeper();
+			$(".player1score").text(pigdice.totalscore);
+			$(".turnscore").text(pigdice.turnscore);
 
 		});
+
+
+
 	});
 });
 
