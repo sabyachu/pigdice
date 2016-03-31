@@ -2,10 +2,11 @@
   margin-top: 5%;
 }
 
-.rollorhold{
-  display: none;
-}
 
 .scoring{
   margin-top: 5%;
+}
+
+.gameboard {
+  display: none;
 }
